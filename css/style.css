@@ -1,0 +1,98 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa;
+    color: #333;
+    text-align: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #6ba3d6;
+    color: white;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.map-container {
+    margin: 20px auto;
+    width: 80%;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+.info-container {
+    margin: 20px auto;
+    width: 80%;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.animal-info {
+    background-color: #FFF;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.animal-info h3 {
+    font-size: 1.5em;
+}
+
+.animal-info img {
+    width: 100%;
+    height: auto;
+}
+
+.weather-info {
+    background-color: #FFF;
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.weather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temperature {
+    font-size: 2em;
+    padding-right: 20px;
+}
+
+.temperature img {
+    height: 50px;
+    width: 50px;
+}
+
+.weather-chart img {
+    width: 200px;
+    height: auto;
+}
+
+footer {
+    background-color: #6ba3d6;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+}
