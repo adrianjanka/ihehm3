@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tot & Wolkig</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- Title Section -->
+    <header>
+        <h1>TOT & WOLKIG</h1>
+    </header>
+
+    <section class="welcome-container">
+        <h3>Hallo und herzlich willkommen.</h3>
+        <p>
+            Wir freuen uns, dass ihr die letzten Städte von ausgestorbenen Tierarten besuchen wollt. 
+            Damit ihr nicht verregnet werdet, findet ihr dazu noch die Wetterdaten.
+        </p>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-container">
+        <div id="map"></div>
+    </section>
+
+    <!-- Animal and Weather Info Section -->
+    <section class="info-container">
+        <h2>Chur, Switzerland</h2>
+        <div class="animal-info">
+            <h3>Quagga</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Quagga_photo.jpg" alt="Quagga">
+            <p>The quagga (<i>Equus quagga quagga</i>) is a subspecies of the plains zebra...</p>
+            <p><strong>Last seen:</strong> 1872</p>
+        </div>
+
+        <!-- Weather Data -->
+        <div class="weather-info">
+            <h3>Weather in: Chur, Switzerland</h3>
+            <p>Last 7 days</p>
+            <div class="weather">
+                <div class="temperature">
+                    <span>25°C</span>
+                    <img src="sun-icon.png" alt="Sunny Weather">
+                </div>
+                <div class="weather-chart">
+                    <!-- Chart image or a real chart would go here -->
+                    <img src="chart-placeholder.png" alt="Temperature chart">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© adimoritas 2024</p>
+    </footer>
+
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Link to external JavaScript -->
+    <script src="script/script.js"></script>
+
+</body>
+</html>
