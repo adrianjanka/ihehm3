@@ -35,6 +35,10 @@ header p {
     width: 100%;
 }
 
+#animal-info {
+    margin-top: 20px;
+}
+
 .info-container {
     margin: 20px auto;
     width: 80%;
@@ -48,8 +52,9 @@ h2 {
 .animal-info {
     background-color: #FFF;
     display: inline-block;
-    width: 45%;
-    vertical-align: top;
+    width: 70%;
+    margin-top: 20px;
+    padding: 2%;
 }
 
 .animal-info h3 {

@@ -1,35 +1,60 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize the map
-    var map = L.map('map').setView([20, 0], 2); // Centered at latitude 20, longitude 0
 
-    // Load the OpenStreetMap tiles
+    getAnimalInfos();
+
+});
+
+
+async function getAnimalInfos() {
+    // Erstelle eine Karte und setze die Standardansicht (Mittelpunkt auf Europa)
+    var map = L.map('map').setView([20, 0], 2);
+
+    // OpenStreetMap-Kacheln laden
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    // Define pin locations
-    var locations = [
-        {
-            name: "Chur, Switzerland",
-            coords: [46.85, 9.53], // Coordinates for Chur
-            description: "Last seen: Quagga, 1872"
-        },
-        {
-            name: "Lake Atitlán, Guatemala",
-            coords: [14.7, -91.2], // Coordinates for Lake Atitlán
-            description: "Last seen: Atitlán grebe, 1983"
-        },
-        {
-            name: "Antananarivo, Madagascar",
-            coords: [-18.8792, 47.5079], // Coordinates for Antananarivo
-            description: "Last seen: Afrocyclops pauliani, 1951"
-        }
-    ];
+    // AJAX-Anfrage an das PHP-Skript, um die Koordinaten zu laden
+    await fetch('script/getAnimalsInfo.php')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
 
-    // Loop through each location and add a marker
-    locations.forEach(function (location) {
-        var marker = L.marker(location.coords).addTo(map);
-        marker.bindPopup("<b>" + location.name + "</b><br>" + location.description).openPopup();
-    });
-});
+            // HTML-Container für die Tierinformationen
+            let infoContainer = document.getElementById('animal-info');
+
+            data.forEach(animal => {
+                // Füge für jede Location einen Marker hinzu
+                var marker = L.marker([animal.latitude, animal.longitude]).addTo(map);
+
+                // Binde ein Popup an den Marker mit der Beschreibung
+                // marker.bindPopup(`<b>${location.location}</b><br>${location.description}`);
+
+                // Füge ein 'click'-Event hinzu, um die Informationen unter der Karte anzuzeigen
+                marker.on('click', function() {
+                    // Leere das infoContainer-Element
+                    infoContainer.innerHTML = '';
+
+                    // Informationen der Location anzeigen
+                    let animalInfo = document.createElement('div');
+                    animalInfo.classList.add('animal-info');
+                    
+                    // Titel der Location
+                    let locationTitle = document.createElement('h2');
+                    locationTitle.innerHTML = animal.location;
+
+                    infoContainer.appendChild(locationTitle);
+
+                    animalInfo.innerHTML = `${animal.description}`;
+                    
+                    
+                    infoContainer.appendChild(animalInfo);
+                });
+
+            });
+        })
+        .catch(error => {
+            console.error('Fehler beim Abrufen der Daten:', error);
+        });
+}

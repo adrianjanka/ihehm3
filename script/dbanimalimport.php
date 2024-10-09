@@ -1,9 +1,6 @@
 <?php
 
-$dbHost = getenv('exigo_db_server');
-$dbName = getenv('exigo_db_name');
-$dbUser = getenv('exigo_db_username');
-$dbPass = getenv('exigo_db_password');
+require_once 'config.php';
 
 // Establish a connection to the database
 try {
