@@ -2,7 +2,7 @@
 
 $weatherCondition = "Patchy rain nearby"; // Example weather condition, replace with actual data source
 
-if (in_array($weatherCondition, ["Patchy rain nearby", "Light rain shower", "Moderate rain", "Shower in vicinity", "Rain shower", "Light rain", "Moderate rain at times", "Rain", "Light drizzle", "Heavy rain"])) {
+if (in_array($weatherCondition, ["Patchy rain nearby", "Light rain shower", "Moderate rain", "Shower in vicinity", "Rain shower", "Light rain", "Moderate rain at times", "Rain", "Light drizzle", "Heavy rain", "Patchy light drizzle", "Patchy light rain"])) {
     $image = "rain.gif";
 } 
 elseif (in_array($weatherCondition, ["Sunny", "Clear"])) {
