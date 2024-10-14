@@ -22,7 +22,7 @@ async function getInfos() {
             console.log("Tiere: ",data);
 
             // HTML-Container für die Tierinformationen
-            let infoContainer = document.getElementById('animal-info');
+            let infoContainer = document.getElementById('info');
             let locationContainer = document.getElementById('location');
 
             data.forEach(animal => {
@@ -35,7 +35,13 @@ async function getInfos() {
                 // Füge ein 'click'-Event hinzu, um die Informationen unter der Karte anzuzeigen
                 marker.on('click', function() {
                     // Leere das infoContainer-Element
-                    infoContainer.innerHTML = '';
+                    info.innerHTML = '';
+
+                    let animalInfoDiv = document.createElement('div');
+                    animalInfoDiv.classList.add('animal-info');
+
+                    info.appendChild(animalInfoDiv);
+
 
                     // Informationen der Location anzeigen
                     let animalInfo = document.createElement('div');
@@ -63,7 +69,7 @@ async function getInfos() {
                     nameLastseenDiv.appendChild(animalName);
                     nameLastseenDiv.appendChild(lastseen);
                     
-                    infoContainer.appendChild(nameLastseenDiv);
+                    animalInfoDiv.appendChild(nameLastseenDiv);
 
 
 
@@ -83,9 +89,9 @@ async function getInfos() {
                     imgDescDiv.appendChild(animalImage);
                     imgDescDiv.appendChild(animalDesc);
                     
-                    infoContainer.appendChild(imgDescDiv);
+                    animalInfoDiv.appendChild(imgDescDiv);
                     
-                    infoContainer.appendChild(animalInfo);
+                    animalInfoDiv.appendChild(animalInfo);
 
 
                     // Wetterinformationen basierend auf der Location und Temperaturverlauf abrufen
@@ -133,7 +139,7 @@ async function getInfos() {
                             </div>
                             
                         `;
-                        infoContainer.appendChild(weatherInfo);
+                        animalInfoDiv.appendChild(weatherInfo);
                         
                         // Rufe die Funktion auf, um den Temperaturverlauf in einem Chart darzustellen
                         createTemperatureChart(weatherData);  // Hier wird die Funktion für das Diagramm aufgerufen

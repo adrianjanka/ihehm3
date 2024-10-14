@@ -31,7 +31,8 @@ body::before
 header {
     /* background-color: #6ba3d6; */
     color: rgb(0, 0, 0);
-    padding: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
     width: 100%;
     top: 0;
 }
@@ -102,13 +103,13 @@ header p {
 
 .animalImage {
     flex: 1;
-    width: 200px!important;
 }
 
 .animalDesc {
     flex: 1;
     text-align: center;
     padding-left: 5%;
+    font-size: x-large;
 }
 
 h2 {
@@ -116,12 +117,13 @@ h2 {
     margin-bottom: 10px;
 }
 
-#animal-info {
+.animal-info {
     background-color: #FFF;
     display: inline-block;
     width: 76%;
     margin: auto;
     padding: 2%;
+    margin-bottom: 3%;
 }
 
 /* Weather Styles */
@@ -145,9 +147,9 @@ h2 {
 }
 
 footer {
-    /* background-color: #6ba3d6; */
     color: rgb(0, 0, 0);
-    padding: 10px;
+    padding-bottom: 30px;
+    padding-top: 30px;
     width: 100%;
     bottom: 0;
 }
