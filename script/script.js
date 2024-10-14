@@ -23,6 +23,7 @@ async function getAnimalInfos() {
 
             // HTML-Container für die Tierinformationen
             let infoContainer = document.getElementById('animal-info');
+            let locationContainer = document.getElementById('location');
 
             data.forEach(animal => {
                 // Füge für jede Location einen Marker hinzu
@@ -38,15 +39,54 @@ async function getAnimalInfos() {
 
                     // Informationen der Location anzeigen
                     let animalInfo = document.createElement('div');
-                    animalInfo.classList.add('animal-info');
                     
                     // Titel der Location
+                    locationContainer.innerHTML = '';
                     let locationTitle = document.createElement('h2');
                     locationTitle.innerHTML = animal.location;
 
-                    infoContainer.appendChild(locationTitle);
+                    locationContainer.appendChild(locationTitle);
 
-                    animalInfo.innerHTML = `${animal.description}`;
+
+                    // Tiername - lastSeen
+                    let nameLastseenDiv = document.createElement('div');
+                    nameLastseenDiv.classList.add('nameLastseenDiv');
+                    
+                    let animalName = document.createElement('p');
+                    animalName.classList.add('animalName');
+                    animalName.innerText = `${animal.name}`;
+                    
+                    let lastseen = document.createElement('p');
+                    lastseen.classList.add('lastseen');
+                    lastseen.innerText = `Last seen: ${animal.last_record}`;
+                    
+                    nameLastseenDiv.appendChild(animalName);
+                    nameLastseenDiv.appendChild(lastseen);
+                    
+                    infoContainer.appendChild(nameLastseenDiv);
+
+
+
+                    // image - description
+                    let imgDescDiv = document.createElement('div');
+                    imgDescDiv.classList.add('imgDescDiv');
+                    
+                    let animalImage = document.createElement('img');
+                    animalImage.classList.add('animalImage');
+                    animalImage.src = `${animal.image}`;
+                    animalImage.alt = 'animal image';
+                    animalImage.width = '200';
+                    
+                    let animalDesc = document.createElement('p');
+                    animalDesc.classList.add('animalDesc');
+                    animalDesc.innerText = `${animal.description}`;
+                    
+                    imgDescDiv.appendChild(animalImage);
+                    imgDescDiv.appendChild(animalDesc);
+                    
+                    infoContainer.appendChild(imgDescDiv);
+                    
+
                     
                     
                     infoContainer.appendChild(animalInfo);
