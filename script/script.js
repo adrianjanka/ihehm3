@@ -1,14 +1,14 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-
     getInfos();
-
 });
 
 
 async function getInfos() {
     // Erstelle eine Karte und setze die Standardansicht (Mittelpunkt auf Europa)
-    var map = L.map('map').setView([20, 0], 2);
+    var map = L.map('map', {
+        zoomControl: false
+    }).setView([20, 0], 2);
 
     // OpenStreetMap-Kacheln laden
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -93,14 +93,43 @@ async function getInfos() {
                     .then(response => response.json())
                     .then(weatherData => {
                         console.log("Wetter: ",weatherData);
+
+                        // weather desc
+                        let weatherCondition = weatherData[0].description;
+                        let imageSrc;
+                        console.log(weatherCondition);
+
+                        if (["Patchy rain nearby", "Light rain shower", "Moderate rain", "Shower in vicinity", "Rain shower", "Light rain", "Moderate rain at times", "Rain", "Light drizzle", "Heavy rain", "Patchy light drizzle", "Patchy light rain", "Rain, mist"].includes(weatherCondition)) {
+                            imageSrc = "img/rain.gif";
+                        } else if (["Sunny", "Clear"].includes(weatherCondition)) {
+                            imageSrc = "img/sun.gif";
+                        } else if (["Cloudy", "Overcast"].includes(weatherCondition)) {
+                            imageSrc = "img/clouds.gif";
+                        } else if (["Mist", "Fog", "Haze", "Freezing fog"].includes(weatherCondition)) {
+                            imageSrc = "img/fog.gif";
+                        } else if (["Thundery outbreaks in nearby", "Thunderstorms", "Heavy thunderstorm", "Heavy thunderstorms", "Thunderstorm with rain", "Thunderstorms with rain", "Heavy thunderstorm with rain", "Heavy thunderstorms with rain", "Thunder", "Thunders"].includes(weatherCondition)) {
+                            imageSrc = "img/thunder.gif";
+                        } else if (["Snow", "Blizzard", "Heavy snow", "Heavy snow showers", "Heavy snowfall", "Heavy snowfall showers", "Light snow", "Light snow showers", "Light snowfall", "Light snowfall showers", "Moderate snow", "Moderate or heavy snow showers", "Moderate snowfall", "Moderate snowfall showers", "Snow showers", "Snowfall", "Snowfall showers", "Moderate snow showers", "Heavy snow showers"].includes(weatherCondition)) {
+                            imageSrc = "img/snow.gif";
+                        } else if (["Partly cloudy", "Partly cloudy skies"].includes(weatherCondition)) {
+                            imageSrc = "img/sunandcloud.gif";
+                        } else {
+                            imageSrc = "img/clouds.gif";
+                        }
+                        console.log(imageSrc);
+
                         // Wetterinformationen anzeigen
                         let weatherInfo = document.createElement('div');
                         weatherInfo.innerHTML = `
                             <h2>Weather in: ${animal.location}<br>Last 7 Days</h2>
 
                             <div class="weatherInfoDiv">
-                                <img class="weatherGif" >
-                                <canvas id="temperatureChart" width="400" height="200"></canvas>
+                                <div class="weatherGifDiv">
+                                    <img class="weatherGifImg" src="${imageSrc}" alt="${weatherCondition}">
+                                </div>
+                                <div class="weatherChart">
+                                    <canvas id="temperatureChart"></canvas>
+                                </div>
                             </div>
                             
                         `;
@@ -146,7 +175,7 @@ async function createTemperatureChart(weatherData) {
                 data: temperatures,  // Y-Achse: Temperatur
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                fill: true
+                fill: false
             }]
         },
         options: {

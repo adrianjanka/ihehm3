@@ -20,7 +20,7 @@ if (empty($location)) {
 }
 
 // Wetterinformationen für die Location aus der Datenbank abrufen
-$stmt = $pdo->prepare("SELECT DISTINCT date, temperature, description FROM weather_data WHERE location = :location;");
+$stmt = $pdo->prepare("SELECT DISTINCT date, temperature, description FROM weather_data WHERE location = :location AND date >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) ORDER BY date DESC;");
 $stmt->bindParam(':location', $location);
 $stmt->execute();
 
