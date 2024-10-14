@@ -124,32 +124,24 @@ h2 {
     padding: 2%;
 }
 
-.weather-info {
-    background-color: #FFF;
-    display: inline-block;
-    width: 45%;
-    vertical-align: top;
-}
+/* Weather Styles */
 
-.weather {
+.weatherInfoDiv {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.temperature {
-    font-size: 2em;
-    padding-right: 20px;
+.weatherGifDiv {
+    flex: 1;
 }
 
-.temperature img {
-    height: 50px;
-    width: 50px;
+.weatherGifImg {
+    width: 100%;
 }
 
-.weather-chart img {
-    width: 200px;
-    height: auto;
+.weatherChart {
+    flex: 1;
 }
 
 footer {
