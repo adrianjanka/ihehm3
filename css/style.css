@@ -1,6 +1,7 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "sarvatrik-latin-variable", sans-serif;
+    font-variation-settings: "wght" 100;
     margin: 0;
     padding: 0;
     /* background-color: #e0f7fa; */
@@ -32,24 +33,37 @@ header {
     /* background-color: #6ba3d6; */
     color: rgb(0, 0, 0);
     padding-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 50px;
     width: 100%;
     top: 0;
 }
+  
 
 h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin: 0;
+    font-family: "podium-soft-variable",sans-serif;
+    font-variation-settings: 'wdth' 100;
+    font-weight: 100;
 }
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
 
 h3 {
     font-size: 1.5em;
     margin: 0;
+    font-weight: 600;
 }
 
 p {
     font-size: 1.1em;
     margin: 10px 0;
+    font-weight: 600;
 }
 
 header p {
@@ -112,10 +126,6 @@ header p {
     font-size: x-large;
 }
 
-h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
 
 .animal-info {
     background-color: #FFF;

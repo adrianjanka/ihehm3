@@ -58,11 +58,11 @@ async function getInfos() {
                     let nameLastseenDiv = document.createElement('div');
                     nameLastseenDiv.classList.add('nameLastseenDiv');
                     
-                    let animalName = document.createElement('p');
+                    let animalName = document.createElement('h3');
                     animalName.classList.add('animalName');
                     animalName.innerText = `${animal.name}`;
                     
-                    let lastseen = document.createElement('p');
+                    let lastseen = document.createElement('h3');
                     lastseen.classList.add('lastseen');
                     lastseen.innerText = `Last seen: ${animal.last_record}`;
                     
