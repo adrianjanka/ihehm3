@@ -185,6 +185,7 @@ async function createTemperatureChart(weatherData) {
             }]
         },
         options: {
+            responsive: true,
             scales: {
                 x: {
                     type: 'time',
