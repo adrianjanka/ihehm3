@@ -48,15 +48,19 @@ h1 {
 }
 
 h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    font-weight: 800;
+    font-size: 3em;
+    font-weight: 900;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
 h3 {
-    font-size: 1.5em;
-    margin: 0;
+    font-size: 2em;
     font-weight: 600;
 }
 
@@ -89,8 +93,12 @@ header p {
 #location h2 {
     font-size: 3em;
     font-weight: 900;
-    padding-top: 500px;
+    padding-top: 50px;
     padding-bottom: 50px;
+    border-bottom: 2px solid black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .info-container {
@@ -106,20 +114,17 @@ header p {
 
 .animalName {
     flex: 1;
-    font-size: 1.5em;
-    font-weight: bold;
+    padding: 30px;
 }
 
 .lastseen {
     flex: 1;
-    font-size: 1.5em;
-    font-weight: bold;
 }
 
 .imgDescDiv {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin-bottom: 500px;
 }
 
 .animalImage {
@@ -135,7 +140,7 @@ header p {
 
 
 .animal-info {
-    background-color: #FFF;
+    /* background-color: #ffffff7a; */
     display: inline-block;
     width: 76%;
     margin: auto;
@@ -149,6 +154,7 @@ header p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 200px;
 }
 
 .weatherGifDiv {

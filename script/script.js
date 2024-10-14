@@ -60,7 +60,7 @@ async function getInfos() {
                     
                     let animalName = document.createElement('h3');
                     animalName.classList.add('animalName');
-                    animalName.innerText = `${animal.name}`;
+                    animalName.innerText = `Animal: ${animal.name}`;
                     
                     let lastseen = document.createElement('h3');
                     lastseen.classList.add('lastseen');
@@ -127,7 +127,7 @@ async function getInfos() {
                         // Wetterinformationen anzeigen
                         let weatherInfo = document.createElement('div');
                         weatherInfo.innerHTML = `
-                            <h2>Weather in: ${animal.location}<br>Last 7 Days</h2>
+                            <h2>Weather in: ${animal.location} in the last 7 Days</h2>
 
                             <div class="weatherInfoDiv">
                                 <div class="weatherGifDiv">
