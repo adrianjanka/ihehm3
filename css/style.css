@@ -3,16 +3,37 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0f7fa;
+    /* background-color: #e0f7fa; */
     color: #333;
     text-align: center;
     min-height: 100vh;
 }
 
+body::before
+{
+    content: "";
+    background-image: url('../img/backgroundimage4.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+
+
 header {
-    background-color: #6ba3d6;
-    color: white;
+    /* background-color: #6ba3d6; */
+    color: rgb(0, 0, 0);
     padding: 30px;
+    width: 100%;
+    top: 0;
 }
 
 h1 {
@@ -23,6 +44,11 @@ h1 {
 header p {
     font-size: 1.2em;
     margin: 10px 0;
+}
+
+.welcome-container {
+    margin: 20px auto;
+    width: 70%;
 }
 
 .map-container {
@@ -54,6 +80,8 @@ header p {
 
 .lastseen {
     flex: 1;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .imgDescDiv {
@@ -69,7 +97,7 @@ header p {
 
 .animalDesc {
     flex: 1;
-    text-align: right;
+    text-align: center;
     padding-left: 5%;
 }
 
@@ -81,8 +109,8 @@ h2 {
 #animal-info {
     background-color: #FFF;
     display: inline-block;
-    width: 70%;
-    margin-top: 20px;
+    width: 76%;
+    margin: auto;
     padding: 2%;
 }
 
@@ -115,9 +143,66 @@ h2 {
 }
 
 footer {
-    background-color: #6ba3d6;
-    color: white;
+    /* background-color: #6ba3d6; */
+    color: rgb(0, 0, 0);
     padding: 10px;
     width: 100%;
     bottom: 0;
+}
+
+.animalImage {
+    width: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .welcome-container,
+    .map-container,
+    .info-container {
+        width: 90%;
+    }
+
+    .nameLastseenDiv,
+    .imgDescDiv {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .animalName,
+    .lastseen,
+    .animalImage,
+    .animalDesc {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .animalImage {
+        width: 100%!important;
+        margin-bottom: 10px;
+    }
+
+    .animalDesc {
+        padding-left: 0;
+    }
+
+    .weather-info {
+        width: 100%;
+    }
+
+    .weather-chart img {
+        width: 100%;
+    }
 }

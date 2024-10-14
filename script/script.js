@@ -75,7 +75,6 @@ async function getAnimalInfos() {
                     animalImage.classList.add('animalImage');
                     animalImage.src = `${animal.image}`;
                     animalImage.alt = 'animal image';
-                    animalImage.width = '200';
                     
                     let animalDesc = document.createElement('p');
                     animalDesc.classList.add('animalDesc');
