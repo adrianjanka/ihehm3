@@ -22,7 +22,7 @@ async function getInfos() {
             console.log("Tiere: ",data);
 
             // HTML-Container für die Tierinformationen
-            let infoContainer = document.getElementById('info');
+            // let infoContainer = document.getElementById('info');
             let locationContainer = document.getElementById('location');
 
             data.forEach(animal => {
@@ -143,6 +143,9 @@ async function getInfos() {
                         
                         // Rufe die Funktion auf, um den Temperaturverlauf in einem Chart darzustellen
                         createTemperatureChart(weatherData);  // Hier wird die Funktion für das Diagramm aufgerufen
+                        
+                        // scorll to weather info
+                        locationContainer.scrollIntoView({behavior: "smooth"});
                     })
                     .catch(error => {
                         console.error('Fehler beim Abrufen der Wetterinformationen:', error);
