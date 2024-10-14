@@ -1,12 +1,12 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
 
-    getAnimalInfos();
+    getInfos();
 
 });
 
 
-async function getAnimalInfos() {
+async function getInfos() {
     // Erstelle eine Karte und setze die Standardansicht (Mittelpunkt auf Europa)
     var map = L.map('map').setView([20, 0], 2);
 
@@ -19,7 +19,7 @@ async function getAnimalInfos() {
     await fetch('script/getAnimalsInfo.php')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log("Tiere: ",data);
 
             // HTML-Container für die Tierinformationen
             let infoContainer = document.getElementById('animal-info');
@@ -85,10 +85,37 @@ async function getAnimalInfos() {
                     
                     infoContainer.appendChild(imgDescDiv);
                     
-
-                    
-                    
                     infoContainer.appendChild(animalInfo);
+
+
+                    // Wetterinformationen basierend auf der Location und Temperaturverlauf abrufen
+                    fetch(`script/getWeatherInfo.php?location=${animal.location}`)
+                    .then(response => response.json())
+                    .then(weatherData => {
+                        console.log("Wetter: ",weatherData);
+                        // Wetterinformationen anzeigen
+                        let weatherInfo = document.createElement('div');
+                        weatherInfo.innerHTML = `
+                            <h2>Weather in: ${animal.location}<br>Last 7 Days</h2>
+
+                            <div class="weatherInfoDiv">
+                                <img class="weatherGif" >
+                                <canvas id="temperatureChart" width="400" height="200"></canvas>
+                            </div>
+                            
+                        `;
+                        infoContainer.appendChild(weatherInfo);
+                        
+                        // Rufe die Funktion auf, um den Temperaturverlauf in einem Chart darzustellen
+                        createTemperatureChart(weatherData);  // Hier wird die Funktion für das Diagramm aufgerufen
+                    })
+                    .catch(error => {
+                        console.error('Fehler beim Abrufen der Wetterinformationen:', error);
+                    });
+
+
+
+
                 });
 
             });
@@ -96,4 +123,51 @@ async function getAnimalInfos() {
         .catch(error => {
             console.error('Fehler beim Abrufen der Daten:', error);
         });
+}
+
+
+
+// Funktion zum Erstellen des Liniendiagramms mit Chart.js
+async function createTemperatureChart(weatherData) {
+
+    // Daten verarbeiten
+    const dates = weatherData.map(entry => entry.date);  // X-Achse: Datum
+    const temperatures = weatherData.map(entry => entry.temperature);  // Y-Achse: Temperatur
+
+    // Liniendiagramm mit Chart.js erstellen
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    
+    const temperatureChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,  // X-Achse: Datum
+            datasets: [{
+                label: 'Temperatur (°C)',
+                data: temperatures,  // Y-Achse: Temperatur
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'  // Zeitachse auf Tage setzen
+                    }
+                },
+                y: {
+                    beginAtZero: false,
+                    min: -5,  // Mindestwert für die Y-Achse (z.B. -5 °C)
+                    max: 40,  // Höchstwert für die Y-Achse (z.B. 40 °C)
+                    ticks: {
+                        callback: function(value) {
+                            return value + '°C';  // Temperaturen in °C anzeigen
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
