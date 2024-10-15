@@ -141,6 +141,27 @@ header p {
     padding-left: 5%;
 }
 
+.vacationButton {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: "sarvatrik-latin-variable", sans-serif;
+    font-weight: 300;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+
+.vacationButton:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .animal-info {
     /* background-color: #ffffff7a; */
@@ -170,6 +191,8 @@ header p {
 
 .weatherChart {
     flex: 2;
+    width: 100%;
+    height: 100%;
 }
 
 footer {
@@ -183,6 +206,7 @@ footer {
 .animalImage {
     width: 200px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 @media (max-width: 600px) {
@@ -191,11 +215,20 @@ footer {
     }
 
     header {
-        padding: 20px;
+        padding-top: 50px;
+        padding-bottom: 20px;
     }
 
     h1 {
         font-size: 2.5em;
+    }
+
+    h3.animalName {
+        padding-bottom: 0;
+    }
+
+    h3.lastseen {
+        padding-bottom: 0;
     }
 
     p {
@@ -233,9 +266,13 @@ footer {
     }
 
     .weatherChart {
-        width: 80%;
-        height: 80%;
+        width: 100%;
+        height: 100%;
+    }
 
+    .weatherInfoDiv {
+        flex-direction: column;
+        align-items: center;
     }
 
 
