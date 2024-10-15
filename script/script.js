@@ -1,10 +1,10 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-    getInfos();
+    buildPage();
 });
 
 
-async function getInfos() {
+async function buildPage() {
     // Erstelle eine Karte und setze die Standardansicht (Mittelpunkt auf Europa)
     var map = L.map('map', {
         zoomControl: false
