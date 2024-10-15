@@ -189,6 +189,16 @@ async function createTemperatureChart(weatherData) {
         },
         options: {
             responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            weight: 'bold',  // Fettgedruckte Labels
+                            size: 15         // Optionale Schriftgröße
+                        }
+                    }
+                }
+            },
             scales: {
                 x: {
                     type: 'time',
