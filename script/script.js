@@ -29,8 +29,10 @@ async function getInfos() {
                 // Füge für jede Location einen Marker hinzu
                 var marker = L.marker([animal.latitude, animal.longitude]).addTo(map);
 
-                // Binde ein Popup an den Marker mit der Beschreibung
-                // marker.bindPopup(`<b>${location.location}</b><br>${location.description}`);
+                
+                marker.on('mouseover', function() {
+                    marker.bindTooltip(`<strong>${animal.name}</strong><br>last seen: ${animal.last_record}`).openTooltip();
+                });
 
                 // Füge ein 'click'-Event hinzu, um die Informationen unter der Karte anzuzeigen
                 marker.on('click', function() {
