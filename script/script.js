@@ -85,6 +85,14 @@ async function getInfos() {
                     let animalDesc = document.createElement('p');
                     animalDesc.classList.add('animalDesc');
                     animalDesc.innerText = `${animal.description}`;
+
+                    let vacationButton = document.createElement('button');
+                    vacationButton.classList.add('vacationButton');
+                    vacationButton.innerText = `Willst du in ${animal.location} Ferien machen? Dann schau dir hier das Wetter an.`;
+                    vacationButton.addEventListener('click', function() {
+                        weatherTitle.scrollIntoView({behavior: "smooth"});
+                    });
+                    animalDesc.appendChild(vacationButton);
                     
                     imgDescDiv.appendChild(animalImage);
                     imgDescDiv.appendChild(animalDesc);
@@ -127,7 +135,7 @@ async function getInfos() {
                         // Wetterinformationen anzeigen
                         let weatherInfo = document.createElement('div');
                         weatherInfo.innerHTML = `
-                            <h2>Weather in: ${animal.location} in the last 7 Days</h2>
+                            <h2 id="weatherTitle">Weather in: ${animal.location} in the last 7 Days</h2>
 
                             <div class="weatherInfoDiv">
                                 <div class="weatherGifDiv">
